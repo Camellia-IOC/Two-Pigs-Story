@@ -26,5 +26,12 @@ management:
         include: '*' # 以web方式暴露所有端点
 
 springdoc:
-    api-docs:
-        enabled: false # 关闭api文档
+  api-docs:
+    enabled: false # 关闭api文档
+
+jwt:
+  secret: 1234567890123456
+  expirationTime: 604800
+  issuer: springboot3-security
+  header: Authorization
+  tokenHead: Bearer

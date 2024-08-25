@@ -281,7 +281,7 @@
 
     // 处理登录请求
     const handleLoginRequest = async () => {
-        await loginRequest.userLogin({ userID: loginRuleForm.value.id, password: loginRuleForm.value.password })
+        await loginRequest.userLogin({ userId: loginRuleForm.value.id, password: loginRuleForm.value.password })
             .then((response: any) => {
                 if (response.data.data.permission === true) {
                     // ElMessage.success("登录成功");
@@ -317,16 +317,16 @@
 
     // 处理注册请求
     const handleRegisterRequest = async () => {
-        await loginRequest.userRegister({ userName: registerRuleForm.value.username, password: registerRuleForm.value.password })
+        await loginRequest.userRegister({ username: registerRuleForm.value.username, password: registerRuleForm.value.password })
             .then((response: any) => {
                 // ElMessage.success('注册成功');
                 ElNotification.success({
-                    title: "登录成功",
-                    message: "欢迎回来",
+                    title: "注册成功",
+                    message: "欢迎使用",
                     customClass: "notification-success"
                 })
                 operationMode.value = 'login';
-                userNewID.value = response.data.data.userID;
+                userNewID.value = response.data.data.userId;
                 confirmDialogVisible.value = true;
             })
             .catch(() => {

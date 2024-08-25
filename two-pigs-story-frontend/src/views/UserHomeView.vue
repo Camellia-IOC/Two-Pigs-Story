@@ -5,7 +5,10 @@
 
         <div class="config-container">
             <div class="config-card">
-
+                <a-avatar size="large" :style="{ backgroundColor: getBackgroundColor, verticalAlign: 'middle' }"
+                    :gap="1">
+                    {{ userName }}
+                </a-avatar>
             </div>
 
             <div class="config-card">
@@ -20,6 +23,11 @@
     import $ from "jquery";
 
     import Navbar from '@/components/TopNavBar.vue'
+
+    const avatarBackgroundColorList = ref<Array<string>>(['#f56a00', '#7265e6', '#ffbf00', '#00a2ae']);
+    const getBackgroundColor = avatarBackgroundColorList.value[Math.random() * (avatarBackgroundColorList.value.length + 1)]
+
+    const userName = ref("test")
 
     $(document).ready(() => {
         $(".config-container").addClass("animate__animated animate__slideInUp");

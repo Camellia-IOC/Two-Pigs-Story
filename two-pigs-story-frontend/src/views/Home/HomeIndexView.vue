@@ -14,17 +14,17 @@
 
     <div class="element-container">
       <!-- 信件区 -->
-      <h1 style="margin: 15vh 0;">来拆信吧</h1>
-      <LoveLetter />
+      <!-- <h1 style="margin: 15vh 0;">来拆信吧</h1> -->
+      <!-- <LoveLetter /> -->
 
       <!-- 照片区 -->
-      <PictureHeart />
+      <!-- <PictureHeart /> -->
 
       <!-- 拼图区 -->
-      <PicturePuzzle />
+      <!-- <PicturePuzzle /> -->
 
       <!-- 刮奖区 -->
-      <LuckyScratch />
+      <!-- <LuckyScratch /> -->
 
       <!-- <div class="picture-display-container" style="flex-direction:row;">
                 <img class="move-to-right test-image" src="@/assets/images/login_background.png" alt="test" />
@@ -43,16 +43,18 @@
   import PicturePuzzle from '@/components/PicturePuzzle.vue'
   import LuckyScratch from '@/components/LuckyScratch.vue';
 
-  const imagesList = ref<Array<string>>([
-    '/images/picture_heart_images/1-6.jpg',
-    '/images/picture_heart_images/2-5.jpg',
-    '/images/picture_heart_images/3-2.jpg',
-    '/images/picture_heart_images/4-7.jpg',
-    '/images/picture_heart_images/5-6.jpg',
-    '/images/picture_heart_images/6-1.jpg',
-    '/images/picture_heart_images/7-5.jpg',
-    '/images/picture_heart_images/8-3.jpg',
-  ])
+  // const imagesList = ref<Array<string>>([
+  //   '/images/picture_heart_images/1-6.jpg',
+  //   '/images/picture_heart_images/2-5.jpg',
+  //   '/images/picture_heart_images/3-2.jpg',
+  //   '/images/picture_heart_images/4-7.jpg',
+  //   '/images/picture_heart_images/5-6.jpg',
+  //   '/images/picture_heart_images/6-1.jpg',
+  //   '/images/picture_heart_images/7-5.jpg',
+  //   '/images/picture_heart_images/8-3.jpg',
+  // ])
+
+  const imagesList = ref<Array<string>>([]);
 
   $(document).ready(function () {
     $(window).on('scroll', function () {
