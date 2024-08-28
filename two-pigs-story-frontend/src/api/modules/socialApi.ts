@@ -1,0 +1,1 @@
+import { socialService as service } from "@/api/AxiosRequestManager";

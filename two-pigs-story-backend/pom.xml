@@ -6,12 +6,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.1</version>
+		<version>3.0.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.example</groupId>
 	<artifactId>two-pigs-story-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>two-pigs-story-backend</name>
 	<description>two-pigs-story-backend</description>
 	<url/>
@@ -21,6 +22,14 @@
 	<developers>
 		<developer/>
 	</developers>
+	<modules>
+		<module>service-auth</module>
+		<module>service-user</module>
+		<module>common</module>
+		<module>service-zone</module>
+		<module>service-social</module>
+		<module>service-gateway</module>
+	</modules>
 	<scm>
 		<connection/>
 		<developerConnection/>
@@ -31,103 +40,139 @@
 		<java.version>17</java.version>
 		<java-jwt.version>4.4.0</java-jwt.version>
 	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 这里引入最新的SpringCloud依赖 -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>2022.0.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- 这里引入最新的SpringCloudAlibaba依赖 -->
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>2022.0.0.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>3.0.2</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter</artifactId>-->
+		<!--		</dependency>-->
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-test</artifactId>-->
+		<!--			<scope>test</scope>-->
+		<!--		</dependency>-->
+
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-web</artifactId>-->
+		<!--		</dependency>-->
 
 		<!--Spring Security-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-security</artifactId>-->
+		<!--		</dependency>-->
 
 		<!--JWT-->
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>${java-jwt.version}</version>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>com.auth0</groupId>-->
+		<!--			<artifactId>java-jwt</artifactId>-->
+		<!--			<version>${java-jwt.version}</version>-->
+		<!--		</dependency>-->
 
 		<!--FastJson-->
-		<dependency>
-			<groupId>com.alibaba.fastjson2</groupId>
-			<artifactId>fastjson2</artifactId>
-			<version>2.0.34</version>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>com.alibaba.fastjson2</groupId>-->
+		<!--			<artifactId>fastjson2</artifactId>-->
+		<!--			<version>2.0.34</version>-->
+		<!--		</dependency>-->
 
 		<!--Lombok-->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.projectlombok</groupId>-->
+		<!--			<artifactId>lombok</artifactId>-->
+		<!--			<scope>provided</scope>-->
+		<!--		</dependency>-->
 
-		<!--MybatisPlus-->
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-			<version>3.5.7</version>
-		</dependency>
+		<!--		&lt;!&ndash;MybatisPlus&ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>com.baomidou</groupId>-->
+		<!--			<artifactId>mybatis-plus-spring-boot3-starter</artifactId>-->
+		<!--			<version>3.5.7</version>-->
+		<!--		</dependency>-->
 
-		<!--MySQL驱动-->
-		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+		<!--		&lt;!&ndash;MySQL驱动&ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>com.mysql</groupId>-->
+		<!--			<artifactId>mysql-connector-j</artifactId>-->
+		<!--			<scope>runtime</scope>-->
+		<!--		</dependency>-->
 
 		<!--Swagger接口文档-->
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.1.0</version>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>org.springdoc</groupId>-->
+		<!--			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
+		<!--			<version>2.1.0</version>-->
+		<!--		</dependency>-->
 
 		<!--Knife4j接口文档-->
-		<dependency>
-			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-			<version>4.5.0</version>
-		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>com.github.xiaoymin</groupId>-->
+		<!--			<artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>-->
+		<!--			<version>4.5.0</version>-->
+		<!--		</dependency>-->
 
-		<!--测试单元-->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.1</version>
-			<scope>test</scope>
-		</dependency>
+		<!--		&lt;!&ndash;测试单元&ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>junit</groupId>-->
+		<!--			<artifactId>junit</artifactId>-->
+		<!--			<version>4.13.1</version>-->
+		<!--			<scope>test</scope>-->
+		<!--		</dependency>-->
 
-		<!--项目运行监控-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
+		<!--		&lt;!&ndash;项目运行监控&ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-actuator</artifactId>-->
+		<!--		</dependency>-->
 
-		<!--日志-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-logging</artifactId>
-		</dependency>
+		<!--		&lt;!&ndash;日志&ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-logging</artifactId>-->
+		<!--		</dependency>-->
 
-		<!--接口参数校验-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
+		<!--		&lt;!&ndash;接口参数校验&ndash;&gt;-->
+		<!--		<dependency>-->
+		<!--			<groupId>org.springframework.boot</groupId>-->
+		<!--			<artifactId>spring-boot-starter-validation</artifactId>-->
+		<!--		</dependency>-->
 	</dependencies>
 
 	<build>

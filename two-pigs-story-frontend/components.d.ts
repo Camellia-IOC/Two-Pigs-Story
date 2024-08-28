@@ -26,6 +26,7 @@ declare module 'vue' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    InviteMate: typeof import('./src/components/zone-view-components/InviteMate.vue')['default']
     LoveLetter: typeof import('./src/components/LoveLetter.vue')['default']
     LuckyScratch: typeof import('./src/components/LuckyScratch.vue')['default']
     PictureHeart: typeof import('./src/components/PictureHeart.vue')['default']

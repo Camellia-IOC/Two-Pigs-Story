@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <!-- 导航栏 -->
-    <Navbar />
+    <Navbar/>
 
     <!-- 主内容 -->
     <div class="container-main">
       <Transition name="MainFade" mode="out-in">
-        <RouterView />
+        <RouterView/>
       </Transition>
     </div>
 
@@ -16,8 +16,15 @@
 </template>
 
 <script setup lang="ts">
-  import { RouterView } from 'vue-router'
+  import {ref, onMounted} from "vue";
+  import {RouterView, useRouter} from 'vue-router'
   import Navbar from '@/components/TopNavBar.vue'
+
+  const router = useRouter()
+
+  onMounted(() => {
+    router.push('/home/zone')
+  })
 </script>
 
 <style scoped>
