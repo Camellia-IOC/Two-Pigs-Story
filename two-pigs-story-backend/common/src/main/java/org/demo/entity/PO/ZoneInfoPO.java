@@ -6,26 +6,26 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
-@TableName("zone")
-public class ZonePO {
+@TableName("zone_info")
+public class ZoneInfoPO {
     @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     
-    @TableField("info")
-    private Integer infoId;
+    @TableField("zone")
+    private Integer zoneId;
     
-    @TableField("owner")
-    private Integer owner;
+    @TableField("intro")
+    private String introduction;
     
-    @TableField("mate")
-    private Integer mate;
+    @TableField("anniversary")
+    private Date anniversary;
     
-    @TableField("create_time")
-    private LocalDateTime createTime;
+    @TableField("pictures")
+    private Integer pictures;
     
-    @TableField("status")
-    private Integer status;
+    @TableField("footprint")
+    private Integer footprint;
 }

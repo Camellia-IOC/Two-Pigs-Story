@@ -114,6 +114,8 @@ public class ZoneServiceImpl extends ServiceImpl<ZoneMapper, ZonePO> implements 
         ZoneMemberResponseVO member = zoneMapper.getZoneMemberByZoneId(request.getId());
         
         if (zoneMapper.closeZone(request.getId()) == 1) {
+            // TODO 还需要删除和该空间有关的其他表中的数据
+            
             return zoneMapper.revokeZone(member.getOwner(), member.getMate()) == 2;
         }
         

@@ -29,6 +29,8 @@
 		<module>service-zone</module>
 		<module>service-social</module>
 		<module>service-gateway</module>
+		<module>service-resource</module>
+		<module>service-post</module>
 	</modules>
 	<scm>
 		<connection/>
@@ -72,11 +74,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-gateway</artifactId>
-		</dependency>
-
 		<!--		<dependency>-->
 		<!--			<groupId>org.springframework.boot</groupId>-->
 		<!--			<artifactId>spring-boot-starter</artifactId>-->
